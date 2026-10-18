@@ -1,0 +1,14 @@
+{
+  "weekday": 1,
+  "startTime": "14:00",
+  "endTime": "15:00",
+  "timeZone": "Europe/Zurich",
+  "venue": "Sous Soul / Theaterstudio",
+  "address": "Spitalgasse 4, 3011 Bern",
+  "status": "active",
+  "excludedDates": [],
+  "notice": {
+    "de": "Zeiten und Ort können sich ändern, insbesondere während der Ferien. Bitte prüfe die aktuellen Ankündigungen in der WhatsApp-Gruppe vor deinem Besuch.",
+    "ru": "Время и место могут меняться, особенно во время каникул. Перед посещением проверь актуальное объявление в группе WhatsApp."
+  }
+}

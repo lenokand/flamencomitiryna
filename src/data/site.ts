@@ -1,0 +1,87 @@
+import schedule from './schedule.json';
+import { validateSchedule } from '../lib/calendar';
+validateSchedule(schedule);
+export { schedule };
+export type Lang = 'de' | 'ru';
+export const settings = {
+  name: 'Flamenco mit Iryna',
+  montagscafe: 'https://volldabei.ch/',
+  whatsapp: 'https://chat.whatsapp.com/EnHi3xcfXYK2fGegk8ajfS?s=cl&p=a&mlu=4&ilr=4',
+  time: `${schedule.startTime}–${schedule.endTime}`,
+  venue: schedule.venue,
+  address: schedule.address,
+  map: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(schedule.address)}`,
+  mapEmbed: `https://maps.google.com/maps?q=${encodeURIComponent(schedule.address)}&z=16&output=embed`,
+};
+export const content = {
+  de: {
+    title: 'Flamenco mit Iryna · Kostenlos tanzen in Bern',
+    description: 'Flamenco mit Iryna in Bern: kostenlose Tanzstunden am Montag, 14:00–15:00, im Sous Soul / Theaterstudio. Rhythmus, Bewegung und Begegnung.',
+    nav: ['Zeit & Ort', 'Mitmachen', 'Iryna', 'Videos'], skip: 'Zum Inhalt',
+    eyebrow: 'KOSTENLOSER FLAMENCO-UNTERRICHT IN BERN', hero: ['Ein Rhythmus.', 'Dein Gefühl.', 'Flamenco.'],
+    intro: 'Spüre die Musik. Finde deinen Ausdruck. Entdecke mit Iryna die Welt des Flamenco – mitten in Bern.',
+    join: 'Mitmachen via WhatsApp', discover: 'Zeit, Ort & Teilnahme', free: 'Kostenlos dabei sein', monday: 'Montag',
+    philosophyLabel: '01 / DAS GEFÜHL', philosophyTitle: 'Mehr als Schritte.',
+    philosophy: 'Flamenco ist Kraft, Liebe, Schönheit und Freiheit. Der Blick, die Hände, der Rhythmus der Absätze – selbst die Stille zwischen den Schlägen spricht.',
+    philosophyEnd: 'Es geht darum, etwas zu fühlen. Und diesem Gefühl Bewegung zu geben.',
+    quote: 'Das Leben ist Bewegung. Und Bewegung zur Musik ist ein Tanz, in dem die Seele ohne Worte spricht.',
+    aboutLabel: '02 / DEINE BEGLEITUNG', aboutTitle: 'Flamenco mit Iryna.',
+    about: 'Iryna lädt dich ein, in die Welt des Flamenco einzutauchen. In Bern teilt sie ihre Freude an Musik, Rhythmus und Tanz – im gemeinsamen Unterricht und bei gelegentlichen Workshops.',
+    aboutEnd: 'Ein Raum zum Ausprobieren, zum gemeinsamen Lernen und für deinen eigenen Ausdruck.',
+    portraitAlt: 'Iryna im roten Flamencokleid mit einem erhobenen Fächer',
+    classLabel: '03 / WIR TANZEN IN BERN', classTitle: 'Dein Montag hat Rhythmus.',
+    price: 'Die Teilnahme ist kostenlos.', scheduleNote: 'Zeiten und Ort können sich ändern, insbesondere während der Ferien. Bitte prüfe die aktuellen Ankündigungen in der WhatsApp-Gruppe vor deinem Besuch.',
+    directions: 'Route öffnen', groupNote: 'Öffne die WhatsApp-Gruppe und schreibe, dass du mitmachen möchtest. Dort kannst du Fragen stellen und den nächsten Termin prüfen. Der Link öffnet die Gruppe; er meldet dich nicht automatisch zum Unterricht an.',
+    galleryLabel: '04 / IN BEWEGUNG', galleryTitle: 'Ein Gefühl für den Tanz.',
+    galleryIntro: 'Drei Videos aus Irynas Sammlung. Nimm dir einen Moment für Musik und Bewegung.',
+    videos: ['Tanzmoment 01', 'Tanzmoment 02', 'Tanzmoment 03'], videoFallback: 'Video herunterladen',
+    speed: 'Tempo', loop: 'Wiederholen',
+    learnLabel: '05 / FÜR ZU HAUSE', learnTitle: 'Der Rhythmus beginnt bei dir.',
+    cards: [
+      {title:'Palmas sordas', tag:'WEICH & GEDÄMPFT', text:'Halte die Hände leicht gewölbt und klatsche weich. Der gedämpfte Klang begleitet Gesang oder Gitarre, ohne sie zu übertönen.'},
+      {title:'Palmas claras', tag:'HELL & DEUTLICH', text:'Helle, klare Klatscher betonen den Rhythmus und verstärken die Energie. Palmas helfen, den Compás zu halten und musikalische Akzente zu setzen.'},
+      {title:'Sevillanas', tag:'SCHRITT FÜR SCHRITT', text:'Wiederhole die Schritte aus dem Unterricht zu Hause. Nutze beim passenden Übungsvideo die Wiederholung und ein langsameres Tempo, um die Bewegungen in Ruhe zu lernen.'}
+    ],
+    workshopLabel: '06 / ZUSAMMENKOMMEN', workshopTitle: 'Mehr Raum für Flamenco.',
+    workshop: 'Iryna gibt gelegentlich auch Workshops, unter anderem im Montagscafé. Neue Termine und Einzelheiten werden in der WhatsApp-Gruppe angekündigt.',
+    workshopNote: 'Aktuell ist hier kein neuer Workshop-Termin bestätigt.',
+    closing: 'Wir sehen uns auf der Tanzfläche.', thanks: 'Mit Unterstützung des Montagscafés',
+    independent: 'Flamenco mit Iryna ist ein eigenständiges Angebot.', top: 'Nach oben',
+    privacy: 'Diese Website verwendet keine Analyse-Cookies. Die eingebettete Karte stellt eine Verbindung zu Google Maps her. Für die Karte sowie beim Öffnen von WhatsApp gelten die Datenschutzbestimmungen des jeweiligen Anbieters.',
+  },
+  ru: {
+    title: 'Flamenco mit Iryna · Бесплатные занятия в Берне',
+    description: 'Фламенко с Ириной в Берне: бесплатные занятия по понедельникам, 14:00–15:00, в Sous Soul / Theaterstudio. Ритм, движение и общение.',
+    nav: ['Когда и где', 'Как прийти', 'Об Ирине', 'Видео'], skip: 'Перейти к содержанию',
+    eyebrow: 'БЕСПЛАТНЫЕ ЗАНЯТИЯ ФЛАМЕНКО В БЕРНЕ', hero: ['Один ритм.', 'Твоё чувство.', 'Фламенко.'],
+    intro: 'Почувствуй музыку. Найди свой способ выражения. Открой мир фламенко вместе с Ириной — в самом сердце Берна.',
+    join: 'Присоединиться в WhatsApp', discover: 'Когда, где и как прийти', free: 'Участие бесплатно', monday: 'Понедельник',
+    philosophyLabel: '01 / ЧУВСТВО', philosophyTitle: 'Больше, чем шаги.',
+    philosophy: 'Фламенко — это сила, любовь, красота и свобода. Здесь говорят взгляд, руки, ритм каблуков — и даже тишина между ударами.',
+    philosophyEnd: 'Почувствовать. И позволить этому чувству стать движением.',
+    quote: 'Жизнь — это движение. А движение под музыку — это танец, в котором душа говорит без слов.',
+    aboutLabel: '02 / ЗНАКОМСТВО', aboutTitle: 'Фламенко с Ириной.',
+    about: 'Ирина приглашает окунуться в мир фламенко. На занятиях в Берне и отдельных воркшопах она делится своей радостью от музыки, ритма и танца.',
+    aboutEnd: 'Пространство, где можно пробовать, учиться вместе и искать собственное выражение в танце.',
+    portraitAlt: 'Ирина в красном платье фламенко с поднятым веером',
+    classLabel: '03 / ТАНЦУЕМ В БЕРНЕ', classTitle: 'У понедельника есть ритм.',
+    price: 'Занятия бесплатные.', scheduleNote: 'Время и место могут меняться, особенно во время каникул. Перед посещением проверь актуальное объявление в группе WhatsApp.',
+    directions: 'Открыть маршрут', groupNote: 'Открой группу WhatsApp и напиши, что хочешь присоединиться. Там можно задать вопросы и уточнить ближайшее занятие. Кнопка открывает группу, а не записывает на урок автоматически.',
+    galleryLabel: '04 / В ДВИЖЕНИИ', galleryTitle: 'Почувствуй танец.',
+    galleryIntro: 'Три видео из коллекции Ирины. Несколько мгновений музыки и движения.',
+    videos: ['Танцевальный момент 01', 'Танцевальный момент 02', 'Танцевальный момент 03'], videoFallback: 'Скачать видео',
+    speed: 'Скорость', loop: 'Повтор',
+    learnLabel: '05 / ДОМАШНЯЯ ПРАКТИКА', learnTitle: 'Ритм начинается с тебя.',
+    cards: [
+      {title:'Palmas sordas', tag:'МЯГКО И ПРИГЛУШЁННО', text:'Слегка округли ладони и хлопай мягко. Приглушённый звук сопровождает пение или гитару, не заглушая их.'},
+      {title:'Palmas claras', tag:'ЗВОНКО И ЧЁТКО', text:'Ясные, звонкие хлопки подчёркивают ритм и усиливают энергию. Palmas помогают поддерживать Compás и расставлять музыкальные акценты.'},
+      {title:'Sevillanas', tag:'ШАГ ЗА ШАГОМ', text:'Повторяй дома шаги, которые вы изучали на занятии. В подходящем учебном видео включи повтор и замедли скорость, чтобы спокойно освоить движения.'}
+    ],
+    workshopLabel: '06 / ВСТРЕЧИ', workshopTitle: 'Ещё больше фламенко.',
+    workshop: 'Ирина также иногда проводит воркшопы, в том числе в Montagscafé. Новые даты и подробности появляются в группе WhatsApp.',
+    workshopNote: 'Новая дата воркшопа здесь пока не подтверждена.',
+    closing: 'До встречи в танце.', thanks: 'При поддержке Montagscafé',
+    independent: 'Flamenco mit Iryna — самостоятельная инициатива.', top: 'Наверх',
+    privacy: 'Сайт не использует аналитические cookies. Встроенная карта устанавливает соединение с Google Maps. Для карты и при переходе в WhatsApp действуют правила конфиденциальности соответствующего сервиса.',
+  }
+} satisfies Record<Lang, unknown>;
