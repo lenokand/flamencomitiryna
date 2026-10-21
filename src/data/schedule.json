@@ -10,5 +10,17 @@
   "notice": {
     "de": "Zeiten und Ort können sich ändern, insbesondere während der Ferien. Bitte prüfe die aktuellen Ankündigungen in der WhatsApp-Gruppe vor deinem Besuch.",
     "ru": "Время и место могут меняться, особенно во время каникул. Перед посещением проверь актуальное объявление в группе WhatsApp."
-  }
+  },
+  "dates": [
+    "2026-10-26",
+    "2026-11-02",
+    "2026-11-09",
+    "2026-11-16",
+    "2026-11-23",
+    "2026-11-30",
+    "2026-12-07",
+    "2026-12-14",
+    "2026-12-21"
+  ],
+  "plannedThrough": "2026-12-24"
 }

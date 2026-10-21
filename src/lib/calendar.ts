@@ -1,6 +1,6 @@
 export interface Schedule {
  weekday: number; startTime: string; endTime: string; timeZone: string;
- venue: string; address: string; status: string; excludedDates: string[];
+ venue: string; address: string; status: string; excludedDates: string[]; dates?: string[];
 }
 export function validateSchedule(s: Schedule) {
  if (!Number.isInteger(s.weekday) || s.weekday < 0 || s.weekday > 6) throw new Error('schedule.weekday must be 0–6');
@@ -9,7 +9,7 @@ export function validateSchedule(s: Schedule) {
  if (!['active','paused'].includes(s.status)) throw new Error('status must be active or paused');
  new Intl.DateTimeFormat('en',{timeZone:s.timeZone}).format();
  if(!s.venue.trim() || !s.address.trim()) throw new Error('Venue and address are required');
- for (const d of s.excludedDates) if (!/^\d{4}-\d{2}-\d{2}$/.test(d) || new Date(d).toISOString().slice(0,10)!==d) throw new Error('Invalid excluded date');
+ for (const d of [...s.excludedDates,...(s.dates || [])]) if (!/^\d{4}-\d{2}-\d{2}$/.test(d) || new Date(d).toISOString().slice(0,10)!==d) throw new Error('Invalid excluded date');
 }
 function parts(date: Date, timeZone: string) {
  return Object.fromEntries(new Intl.DateTimeFormat('en-CA',{timeZone,year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',second:'2-digit',hourCycle:'h23'}).formatToParts(date).map(p=>[p.type,p.value]));
@@ -21,6 +21,7 @@ export function zonedInstant(day: string, time: string, timeZone: string) {
 }
 export function nextClass(s: Schedule, now = new Date()) {
  validateSchedule(s);if(s.status==='paused') return null;
+ if(s.dates) { for(const day of [...s.dates].sort()) { if(s.excludedDates.includes(day))continue;const start=zonedInstant(day,s.startTime,s.timeZone);if(start>now)return {day,start,end:zonedInstant(day,s.endTime,s.timeZone)}; }return null; }
  const p=parts(now,s.timeZone);const today=new Date(`${p.year}-${p.month}-${p.day}T12:00:00Z`);
  for(let i=0;i<370;i++) {const date=new Date(today);date.setUTCDate(date.getUTCDate()+i);const day=date.toISOString().slice(0,10);
  if(date.getUTCDay()!==s.weekday || s.excludedDates.includes(day))continue;
